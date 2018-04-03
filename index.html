@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=650" />
+		<title>Polarization of Light Interactive Demo</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<link href="https://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+
+	</head>
+
+	<body>
+		
+		<div id="landscape">
+
+			<div id="polarizer"></div>
+
+			<div id="sidebar">
+				
+				<h4 class="sidebar-headline">Polarization of Light</h4>
+
+				<div class="buttons">
+					<span class="button launch-modal" data-modal="explanation">Explanation</span>
+					<span class="button launch-modal" data-modal="theory">Theory</span>
+				</div>
+
+				<p>
+					<span id="toggle-polarizer" class="button">Toggle Primary Polarizer<br>
+						<span class="description">(Horizontal polarization)</span>
+					</span>
+				</p>
+
+				<div id="data">
+
+					<div class="data-item">
+						Angle, θ: <span id="angle">0</span>&deg;
+					</div>
+
+					<div class="data-item">
+						<!-- Intensity: S = S<sub>0</sub>cos<sup>2</sup>θ <br> -->
+						S<sub>sunglasses</sub> = <span id="intensity">50</span>%
+					</div>
+
+				</div>
+
+				<div>
+					<span class="description">* All θ are with respect to the horizontal.</span>
+				</div>
+
+				<div class="copyright">
+					<span class="description">Physics project by Ren Ventura.</span>
+				</div>
+
+			</div>
+			
+			<div id="sunglasses">
+				
+				<div id="left-lens" class="lens"></div>
+
+				<div id="nose"></div>
+
+				<div id="right-lens" class="lens"></div>
+
+			</div>
+
+			<div class="modal" id="theory">
+
+				<div class="modal-close"></div>
+				<div class="modal-background"></div>
+				
+				<div class="modal-content">
+					<p>On bright, sunny days, many of the sun's light rays reach our eyes (not so much on gloomy days). This means that the intensity of the light is greater on sunny days. Additionally, if there are any surfaces that greatly reflect the sun's light, such as snow, the intensity increases even more. For these occasions, it's nice to have sunglasses while you're outside.</p>
+					<p>But hang on...sunglasses will help, but <em>polarized</em> sunglasses will help the most! Let's look at why that is.</p>
+					<p><strong>Unpolarized</strong> light, such as the light from the sun, emits rays in every direction, like so...</p>
+					<img src="images/sun-rays.jpg" alt="Light rays from the sun shining through trees in the woods.">
+					<p>A <strong>polarizer</strong>, such as polarized lenses, actually restricts much of these rays from coming through. It does this by "polarizing" the light. Polarizing light is kind of like filtering by the vector components of the rays - it only allows rays with certain components to pass through. For instance, if the polarizer is aligned vertically (up and down), it will only allow the vertical components of light rays to pass through. This produces light that is oriented in one direction, rather than all over.</p>
+					<img src="images/vertical-polarization.jpg" alt="Light rays passing through a vertical polarizer.">
+					<p class="image-caption">Image credit: <a href="http://www.skyandtelescope.com/observing/polarized-light-from-blue-sky-to-egg-nebula/" class="image-credit" target="_blank">http://www.skyandtelescope.com/observing/polarized-light-from-blue-sky-to-egg-nebula/</a></p>
+					<p>So how does this help? By reducing the intensity (S) of the light! On a sunny day, polarized lenses will automatically reduce the intensity of the light around you by <strong>half</strong>.</p>
+					<img src="images/parallel-polarization-intensity.jpg" alt="Parallel polarization.">
+					<p class="image-caption">Image credit: <a href="http://waiferx.blogspot.com/2013/01/presentation-polarization.html" class="image-credit" target="_blank">http://waiferx.blogspot.com/2013/01/presentation-polarization.html</a></p>
+					<p>Where things get interesting is when you add a <em>second</em> polarizer to the mix - polarizing light that is already polarized. How would this affect the overall intensity of the light?</p>
+					<p>If polarized light is polarized again, you may expect the intensity to be 25% of the unpolarized light; the first polarizer halves the intensity, and the second polarizer halves it again (<math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math> x <math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math> = <math><mrow><mfrac><mi>1</mi><mi>4</mi></mfrac></mrow></math>). This assumption is correct, as long as the angles/orientations of the polarizers are the same (they are parallel). When the polarizers are not parallel, the second polarizer lets through only certain components of the polarized light.</p>
+					<img src="images/multiple-polarizers.jpg" alt="Light rays passing through two polarizers at different angles with respect to each other.">
+					<p class="image-caption">Image credit: <a href="https://www.youtube.com/watch?v=lZ-_i82s16E" class="image-credit" target="_blank">https://www.youtube.com/watch?v=lZ-_i82s16E</a></p>
+					<p>In this situation, what if the polarizers are perpendicular to each other? How would this affect intensity? The intensity of the light would actually decrease to <em>zero</em>. To explain how this works, let's consider two polarizers: one that is completely vertical (90&deg; with respect to the surface), and one that is completely horizontal (0&deg; with respect to the surface). The vertical polarizer will orient the light rays to 90&deg;, which means the vectors have <em>no</em> horizontal component. When the horiontal polarizer filters out the vertical component to allow only horizontal components through, it filters <em>all</em> the light, because the rays are entirely vertical due to the vertical polarizer. Since no light gets through, the intensity is zero.</p>
+					<p>We can quantify the effect a second polarizer has on already-polarized light by looking at Malus's Law:</p>
+					<p>
+						<strong>S = S<sub>0</sub>cos<sup>2</sup>θ</strong><br>
+						<span class="description">
+							S = intensity of light after passing through the second polarizer<br>
+							S<sub>0</sub> = intensity of light before the second polarizer (after the first)<br>
+							θ is the angle of the second polarizer with respect to the first
+						</span>
+					</p>
+					<p>Using Malus's Law, let's analyze the effect of a horizontal polarizer that is perpendicular to a vertical polarizer. We know the angle, θ, is 90&deg; because the polarizers are perpendicular. We also know the initial intensity (intensity of the light entering the second polarizer), S<sub>0</sub>, is 0.5 due to the first polarizer. Plugging these values into Malus's Law, we get:</p>
+					<p>S = <math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math>cos<sup>2</sup>(90&deg;) = 0</p>
+					<p>Malus's Law mathematically explains how the overall intensity of the light drops to 0 when passing through two perpendicular polarizers.</p>
+					<img src="images/perpendicular-polarization-intensity.jpg" alt="Perpendicular polarization.">
+					<p class="image-caption">Image credit: <a href="http://waiferx.blogspot.com/2013/01/presentation-polarization.html" class="image-credit" target="_blank">http://waiferx.blogspot.com/2013/01/presentation-polarization.html</a></p>
+					<p>Let's also apply Malus's Law to when the polarizers are completely <em>parallel</em> to each other.</p>
+					<p>S = <math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math>cos<sup>2</sup>(0&deg;) = 0.5</p>
+					<p>This result, in this case, may cause one to believe that the light's intensity after the second polarizer is still 0.5. However, remember that the intensity calculated by Malus's Law is relative to the intensity <em>entering</em> the second polarizer. Since the intensity entering the second polarizer was <sup>1</sup>&frasl;<sub>2</sub>, the intensity is now half of that. In other words, the overall intensity is <sup>1</sup>&frasl;<sub>4</sub> that of the unpolarized light (<math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math> x <math><mrow><mfrac><mi>1</mi><mi>2</mi></mfrac></mrow></math> = <math><mrow><mfrac><mi>1</mi><mi>4</mi></mfrac></mrow></math>).</p>
+				</div>
+
+			</div>
+
+			<div class="modal" id="explanation">
+
+				<div class="modal-close"></div>
+				<div class="modal-background"></div>
+				
+				<div class="modal-content">
+					<h2 class="modal-healine">Polarization of Light</h2>
+					<p>It's a bright, beautiful day, and you're spending it on the snow-covered ski slopes. Since light is relfected intensely off the snow, you'll want a good pair of <em>polarized</em> sunglasses. Let's explore how those sunglasses actually work!</p>
+					<p>To get started, you can drag the polarized sunglasses around your screen, and rotate them in any way. To see what happens when light is polarized by two different polarizers, toggle the Primary Polarizer, and rotate the sunglasses.</p>
+					<p>When rotating the sunglasses, you can check the angle of rotation in the sidebar on the right of the screen. Also note how the polarizers affect the <strong>intensity</strong> of the light (S<sub>sunglasses</sub>).</p>
+					<p>Once you're ready to learn <em>why</em> this happens, open up the "Theory" section for a full explanation on the physics of light polarization. Let's science!</p>
+					<!-- <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/EU7mpWpmYoQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+				</div>
+
+			</div>
+
+		</div>
+
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/godswearhats/jquery-ui-rotatable@1.1/jquery.ui.rotatable.min.js"></script>
+		<script src="https://cdn.rawgit.com/jquery/jquery-ui/9e8e339648901899827a58e5bf919f7dda03b88e/tests/jquery.simulate.js"></script>
+		<script src="js/scripts.js"></script>
+
+	</body>
+
+</html>
